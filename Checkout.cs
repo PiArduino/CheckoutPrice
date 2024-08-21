@@ -4,11 +4,13 @@
     {
         private readonly Dictionary<string, int> _checkoutItems;
         private readonly IPriceProvider _priceProvider;
+        private readonly ISpecialPriceManager _specialPriceManager;
 
-        public Checkout(IPriceProvider priceProvider)
+        public Checkout(IPriceProvider priceProvider, ISpecialPriceManager specialPriceManager)
         {
             _checkoutItems = new Dictionary<string, int>();
             _priceProvider = priceProvider;
+            _specialPriceManager = specialPriceManager; 
         }
 
         public void Scan(string item)
@@ -25,8 +27,9 @@
             {
                 var name = item.Key;
                 var quantity = item.Value;
+                var unitPrice = _priceProvider.GetPrice(name);
 
-                totalPrice += quantity * _priceProvider.GetPrice(name);
+                totalPrice += _specialPriceManager.ApplyOffer(name, quantity, unitPrice);
             }
 
             return totalPrice;
