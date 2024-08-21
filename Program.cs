@@ -1,7 +1,7 @@
 ﻿
-using CheckoutPrice;
-
-static void main()
+class Program
 {
-
+    static void Main()
+    {
+    }
 }
