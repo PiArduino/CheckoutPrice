@@ -19,4 +19,5 @@ Implement a class library that satisfies the problem described above. The soluti
 
 *********************************************************************************************************************************************
 Note: VS2022 did not check-in unit tests with solution automatically. Please see supplementary repository CheckoutPriceTests for unit tests.
+https://github.com/PiArduino/CheckoutPriceTests
 *********************************************************************************************************************************************
